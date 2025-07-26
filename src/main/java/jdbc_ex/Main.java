@@ -16,6 +16,12 @@ public class Main {
 
             Statement statement = connection.createStatement();
 
+            //execute возвращает boolean в зависимости от того успешно выполнился запрос или нет
+            Boolean isUpdated =  statement.execute("UPDATE public.cars\n" +
+                    "\tSET year = 2025\n" +
+                    "\tWHERE id = 2;");
+
+            //запрос
             ResultSet result = statement.executeQuery("SELECT * FROM public.cars");
 
           while (result.next()){

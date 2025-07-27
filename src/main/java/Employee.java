@@ -1,5 +1,8 @@
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "Employees")
@@ -11,9 +14,6 @@ public class Employee {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "office")
-    private String office;
-
     @Column(name = "salary")
     private double salary;
 
@@ -24,6 +24,21 @@ public class Employee {
     private boolean isActive;
 
 
+    @ManyToOne()
+    private Office office;
+
+    @OneToMany()
+    private List<Task> tasks = new ArrayList<>();
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTask(Task task) {
+        this.tasks.add(task);
+    }
+
+
     public String getName() {
         return name;
     }
@@ -32,11 +47,11 @@ public class Employee {
         this.name = name;
     }
 
-    public String getOffice() {
+    public Office getOffice() {
         return office;
     }
 
-    public void setOffice(String office) {
+    public void setOffice(Office office) {
         this.office = office;
     }
 

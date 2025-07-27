@@ -25,6 +25,8 @@
 
 <!--        <mapping class="org.demo.main.model.Employee"/>-->
         <mapping class="Employee"/>
+        <mapping class="Office"/>
+        <mapping class="Task"/>
 
     </session-factory>
 </hibernate-configuration>

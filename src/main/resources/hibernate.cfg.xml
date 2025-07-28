@@ -27,6 +27,7 @@
         <mapping class="Employee"/>
         <mapping class="Office"/>
         <mapping class="Task"/>
+        <mapping class="Project"/>
 
     </session-factory>
 </hibernate-configuration>

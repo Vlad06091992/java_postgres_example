@@ -1,7 +1,9 @@
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -29,6 +31,15 @@ public class Employee {
 
     @OneToMany()
     private List<Task> tasks = new ArrayList<>();
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "employee_project",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
+    private Set<Project> projects = new HashSet<>();
 
     public List<Task> getTasks() {
         return tasks;
@@ -82,6 +93,14 @@ public class Employee {
 
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public Set<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(Set<Project> projects) {
+        this.projects = projects;
     }
 
     // Getters and setters, constructors, etc.

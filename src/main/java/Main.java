@@ -17,6 +17,37 @@ public class Main {
 
             session.beginTransaction(); // начинаем транзакцию
 
+            // ---------- проекты (многие ко многим с сотрудниками -----------------
+            Project crm = new Project();
+            crm.setName("CRM");
+
+            Project reportAutomation = new Project();
+            reportAutomation.setName("Автоматизация отчетности");
+
+            Project websiteRedesign = new Project();
+            websiteRedesign.setName("Редизайн сайта");
+
+            Project mobileAppDev = new Project();
+            mobileAppDev.setName("Разработка мобильного приложения");
+
+            Project digitalMarketing = new Project();
+            digitalMarketing.setName("Диджитал-маркетинг 2024");
+
+            Project loyaltySystem = new Project();
+            loyaltySystem.setName("Система лояльности");
+
+            session.save(crm);
+            session.save(reportAutomation);
+            session.save(websiteRedesign);
+            session.save(mobileAppDev);
+            session.save(digitalMarketing);
+            session.save(loyaltySystem);
+
+
+            // ------------------------------------------------------
+
+
+            // ---------- задачи (много задач, один сотрудник -----------------
             Task eat = new Task();
             eat.setName("поесть");
 
@@ -35,12 +66,19 @@ public class Main {
             session.save(training);
 
 
+            // ------------------------------------------------------
+
+
+            // -------------- офис ----------------------------------
             Office office = new Office();
             office.setAddress("адрес офиса 1");
             office.setName("главный офис");
             session.save(office);
 
+
+            // -------------- сотрудники ----------------------------------
             Employee vasya = new Employee();
+            vasya.setActive(true);
             vasya.setActive(true);
             vasya.setTask(training);
             vasya.setTask(call);
